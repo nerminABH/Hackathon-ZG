@@ -12,4 +12,11 @@ CSV fileovi za import u bazu su dostavljeni u repozitoriju (Jobs.csv i MainDump2
 
 **Pokretanje**
 
-Komande "activator" i "run" pokrecu aplikaciju koja je hostana na localhost:9000, i preko tog porta joj se i pristupa.
+Komande 
+
+```
+activator
+run
+```
+
+pokrecu aplikaciju koja je hostana na localhost:9000, i preko tog porta joj se i pristupa.
