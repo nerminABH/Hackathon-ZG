@@ -23,8 +23,6 @@ Aplikaciji se pristupa na *localhost:9000*
 
 # RSS Parse JAR
 
-**Info**
-
 **Preduvjeti za pokretanje**
 
 Kreirati tabelu u bazi izvrsavanjem slijedeceg SQL koda:
@@ -43,5 +41,12 @@ U istom direktoriju u kojem se nalazi JAR file potrebno je da postoji configurat
   User password:
   admin
 
+**Pokretanje**
+
 Koristeci terminal potrebno je pozicionirati se u folder u kojem se nalazi JAR i pokrenuti ga slijedecom komandom:
 java -jar RssParser.jar
+
+Primjer input parametara: 
+
+Provide a link to RSS feed: http://burzarada.hzz.hr/rss/rsskat1002.xml
+Provide category name: Stručnjaci iz područja informatike i tehničkih znanosti
