@@ -48,6 +48,5 @@ java -jar RssParser.jar
 
 Primjer input parametara: 
 
-Provide a link to RSS feed: http://burzarada.hzz.hr/rss/rsskat1002.xml
-
+Provide a link to RSS feed:[http://burzarada.hzz.hr/rss/rsskat1002.xml](http://burzarada.hzz.hr/rss/rsskat1002.xml)
 Provide category name: Stručnjaci iz područja informatike i tehničkih znanosti
