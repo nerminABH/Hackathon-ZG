@@ -1,0 +1,46 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String, studies: List[String])
+
+@*
+ * Call the the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Studiraj > Zaposli se") {
+
+    @*
+     * Get an `Html` object by calling the built-in Play welcome
+     * template and passing a `String` message.
+     *@
+	<div class="col-lg-3 left">
+		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Lista Zanimanja
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		  	@if(studies.size() > 0 ) {
+				@for(study <- studies) {
+					<li><a href="/jobs/@study">@study</a></li>
+				}
+            } else {
+            	<li>Lista prazna</li>
+            }
+		  </ul>
+		</div>
+	</div>
+	<div class="col-lg-9 right">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h4 style="text-align: center;">Dobrodošli</h4>
+			</div>
+			<div class="panel-body">
+				<img src='@routes.Assets.versioned("images/front.jpeg")' alt="" style="max-width:100%;">
+			</div>
+		</div>
+	</div>
+
+}
