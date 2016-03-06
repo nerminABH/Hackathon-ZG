@@ -1,4 +1,6 @@
-This is your new Play application
+Play application
 =================================
 
-This file will be packaged with your application, when using `activator dist`.
+Aplikacija je napisana u Play framework-u i isti je potreban za pokretanje aplikacije. Baza je takodjer lokalna.
+
+Komande "activator" i "run" pokrecu aplikaciju koja je hostana na localhost:9000, i preko tog porta joj se i pristupa.
