@@ -20,3 +20,28 @@ run
 ```
 
 Aplikaciji se pristupa na *localhost:9000*
+
+# RSS Parse JAR
+
+**Info**
+
+**Preduvjeti za pokretanje**
+
+Kreirati tabelu u bazi izvrsavanjem slijedeceg SQL koda:
+  CREATE TABLE rssfeed (
+  title varchar(200),
+  description varchar(1000),
+  link varchar(200),
+  category varchar(200))
+  
+U istom direktoriju u kojem se nalazi JAR file potrebno je da postoji configuration.txt file (dostavljen na repozitoriju) koji je potrebno azurirati sa odgovarajucim parametrima za konekciju na bazu. Primjer:
+
+  Databasse UR:
+  jdbc:postgresql://localhost/test_1
+  Database user:
+  admin
+  User password:
+  admin
+
+Koristeci terminal potrebno je pozicionirati se u folder u kojem se nalazi JAR i pokrenuti ga slijedecom komandom:
+java -jar RssParser.jar
