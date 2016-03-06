@@ -1,0 +1,6 @@
+Databasse UR:
+jdbc:postgresql://localhost/test_1
+Database user:
+admin
+User password:
+admin
