@@ -1,46 +1,83 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String, studies: List[String])
+@* jobs Template File *@
+@(message: String, studies: List[String], jobs: List[Job], filteredStudies: List[Studies])
 
-@*
- * Call the the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
 @main("Studiraj > Zaposli se") {
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
 	<div class="col-lg-4 left">
 		<div class="dropdown">
+			<div class="well well-sm">Odaberite područje znanosti iz padajuće liste</div>
 		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-		    Lista Zanimanja
+		    Područja znanosti
 		    <span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 		  	@if(studies.size() > 0 ) {
 				@for(study <- studies) {
-					<li><a href="/jobs/@study">@study</a></li>
+					<li><a href="@routes.Application.index(study)">@study</a></li>
 				}
             } else {
             	<li>Lista prazna</li>
             }
 		  </ul>
 		</div>
+		@if(message != null) {
+			<hr>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+				Područje znanosti <b>@message</b> možete studirati na sljedećim Sveučilištima:</div>
+				<div class="list-group">
+					@if(filteredStudies != null) {
+						@if(filteredStudies.size() > 0) {
+							@for(filterStudy <- filteredStudies) {
+								<a href="http://@filterStudy.getUrl()" target="_blank"><button type="button" class="list-group-item">@filterStudy.getExecutorName()</button></a>
+							}
+						}
+					}
+		  		</div>
+		  	</div>
+		}
 	</div>
 	<div class="col-lg-8 right">
-		<div class="panel panel-primary">
+		@if(message != null) {
+			<div class="well well-sm">
+				<h2>Poslovi iz oblasti: @message</h2>
+				<h4>Pripadajuća kategorija: @jobs.get(0).getCategory()</h4>
+			</div>
+			<table class="table table-striped table-bordered table-condensed table-hover">
+				<thead>
+			      <tr>
+			        <th>Trenutno objavljeni poslovi</th>
+			        <!-- <th>Kategorija</th>> -->
+			        <th>Link</th>
+			        <!-- <th>city</th> -->
+			      </tr>
+			    </thead>
+				<tbody>
+				@if(jobs != null ){
+					@if(jobs.size() > 0) {
+						@for(job <- jobs) {
+							<tr>
+								<td>@job.getTitle()</td>
+								
+								<td><a href="@job.getLink()" target="_blank"><button type="button" class="btn btn-primary btn-xs">Pogledaj oglas</button></a></td>
+							</tr>	
+						}
+					}
+				} else {
+					<h3>Nema poslova</h3>
+				}
+				</tbody>
+			</table>
+		} else {
+			<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h4 style="text-align: center;">Dobrodošli</h4>
+				<h4 style="text-align: center;">Dobrodošli na portal</h4>
 			</div>
 			<div class="panel-body">
 				<img src='@routes.Assets.versioned("images/front.jpeg")' alt="" style="max-width:100%;">
 			</div>
 		</div>
+		}
 	</div>
 
 }
